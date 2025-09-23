@@ -40,6 +40,7 @@ import {
 import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
 import { Collapsible, CollapsibleTrigger } from "./ui/collapsible";
 import { CollapsibleContent } from "@radix-ui/react-collapsible";
+import { title } from "process";
 // import { Item } from "@radix-ui/react-dropdown-menu"; 
 
 // Menu items.
@@ -162,9 +163,13 @@ const AppSidebar = () => {
               See All Projects
                </Link>
               </SidebarMenuButton>
+
+              
               {/* {items.title=="Inbox"&& (
                < SidebarMenuBadge> 24</SidebarMenuBadge>
               )} */}
+
+
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>

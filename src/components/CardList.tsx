@@ -100,7 +100,7 @@ const CardList = ({ title }: { title: string }) => {
     <div>
       <h1 className="text-lg font-medium mb-6">{title}</h1>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-2">
         {list.map((item) => (
           <Card key={item.id} className="flex-row items-center justify-center gap-4 p-4">
             <div className="w-12 h-12 relative overflow-hidden rounded-sm flex-shrink-0">
