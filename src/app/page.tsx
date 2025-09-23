@@ -1,19 +1,19 @@
-import { Button } from "@/components/ui/button"
-import {CircleChevronRight } from "lucide-react"
+import AppBarChart from "@/components/AppBarChart";
+import CardList from "@/components/CardList";
+import { ChartAreaGradient } from "@/components/ChartAreaGradient";
+import { ChartPieDonutText } from "@/components/ChartPieDonutText";
+
 export default function Home() {
   return (
-    <div>
-      {/* <Button variant={"outline"} > */}
-      {/* <svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-chevron-right-icon lucide-circle-chevron-right"><circle cx="12" cy="12" r="10"/><path d="m10 8 4 4-4 4"/></svg>
-       <CircleChevronRight />
-        Click me</Button>
-      <span className="bg-green-950">HELLO</span> */}
-     
-{/*   
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1> */}
-  
+    <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-4">
+        <div className="bg-primary-foreground p-4 rounded-lg lg:col-span-2 xl:col-span-2">
+          <AppBarChart/>
+        </div>
+        <div className="bg-primary-foreground p-4 rounded-lg"> <CardList title="Latest Transactions"/> </div>
+        <div className="bg-primary-foreground p-4 rounded-lg"><ChartPieDonutText/></div>
+        <div className="bg-primary-foreground p-4 rounded-lg">TEST</div>
+        <div className="bg-primary-foreground p-4 rounded-lg lg:col-span-2 xl:col-span-2"><ChartAreaGradient/></div>
+        <div className="bg-primary-foreground p-4 rounded-lg"> <CardList title="Popular Content"/>  </div>
     </div>
    
   )

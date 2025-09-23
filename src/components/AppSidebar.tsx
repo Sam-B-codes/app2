@@ -22,8 +22,12 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
+  SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
   SidebarSeparator,
 } from "@/components/ui/sidebar";
 import { AvatarImage } from "./ui/avatar";
@@ -36,6 +40,7 @@ import {
 import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
 import { Collapsible, CollapsibleTrigger } from "./ui/collapsible";
 import { CollapsibleContent } from "@radix-ui/react-collapsible";
+// import { Item } from "@radix-ui/react-dropdown-menu"; 
 
 // Menu items.
 const items = [
@@ -157,6 +162,9 @@ const AppSidebar = () => {
               See All Projects
                </Link>
               </SidebarMenuButton>
+              {/* {items.title=="Inbox"&& (
+               < SidebarMenuBadge> 24</SidebarMenuBadge>
+              )} */}
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
@@ -172,6 +180,46 @@ const AppSidebar = () => {
         </SidebarGroup>
           </Collapsible>
 
+          {/* Nested items  */}
+           <SidebarGroup>
+          <SidebarGroupLabel>Nested Items</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+               <SidebarMenuItem>
+                  <SidebarMenuButton asChild>
+                   <Link href="/#">
+                   <Projector/>
+                   See All Projects
+                   </Link>
+                  </SidebarMenuButton>
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuSubButton asChild>
+                        <Link href="/#">
+                        <Plus/>
+                        Add Project
+                        </Link>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>  
+
+                     <SidebarMenuSubItem>
+                      <SidebarMenuSubButton asChild>
+                        <Link href="/#">
+                        <Plus/>
+                        Add Category
+                        </Link>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem> 
+
+                      </SidebarMenuSub>           
+                      <SidebarMenu>
+                    <SidebarMenuItem>
+                    </SidebarMenuItem>
+                  </SidebarMenu>
+                </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
