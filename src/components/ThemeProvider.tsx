@@ -1,16 +1,14 @@
-"use client"; // ensures this runs on the client side in Next.js 13+
+
+
+
+"use client";
 
 import * as React from "react";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { ThemeProvider as NextThemesProvider, type ThemeProviderProps } from "next-themes";
 
-// A wrapper component for ThemeProvider
-export function ThemeProvider({
-  children,
-  ...props
-}: React.ComponentProps<typeof NextThemesProvider>) {
-  return (
-    <NextThemesProvider {...props}>
-      {children}
-    </NextThemesProvider>
-  );
+// Correct type: add children explicitly
+type Props = React.PropsWithChildren<ThemeProviderProps>;
+
+export default function ThemeProvider({ children, ...props }: Props) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }
