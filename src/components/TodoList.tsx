@@ -48,7 +48,7 @@ const TodoList = () => {
          <div className="flex flex-col gap-4">
         <Card>
           <div className="flex items-center gap-4">
-            <Checkbox id="item1" checked/>
+            <Checkbox id="item1" />
             <label htmlFor="item1" className="text-sm text-muted-foreground">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
               dolorum placeat sapiente ab totam impedit illum eos rem corrupti
@@ -78,7 +78,7 @@ const TodoList = () => {
         </Card>
         <Card>
           <div className="flex items-center gap-4">
-            <Checkbox id="item1" checked/>
+            <Checkbox id="item1" />
             <label htmlFor="item1" className="text-sm text-muted-foreground">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
               dolorum placeat sapiente ab totam impedit illum eos rem corrupti
@@ -98,7 +98,7 @@ const TodoList = () => {
         </Card>
         <Card>
           <div className="flex items-center gap-4">
-            <Checkbox id="item1" checked/>
+            <Checkbox id="item1" />
             <label htmlFor="item1" className="text-sm text-muted-foreground">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
               dolorum placeat sapiente ab totam impedit illum eos rem corrupti
@@ -118,7 +118,7 @@ const TodoList = () => {
         </Card>
         <Card>
           <div className="flex items-center gap-4">
-            <Checkbox id="item1" checked/>
+            <Checkbox id="item1" />
             <label htmlFor="item1" className="text-sm text-muted-foreground">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
               dolorum placeat sapiente ab totam impedit illum eos rem corrupti
