@@ -1,8 +1,12 @@
+
+
+
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
+import Link from "next/link"
+import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,7 +15,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Button } from "@/components/ui/button"
 
+// ✅ Payment type
 export type Payment = {
   id: string
   amount: number
@@ -20,16 +26,13 @@ export type Payment = {
   email: string
 }
 
-// ✅ Table Columns
+// ✅ Columns for DataTable
 export const columns: ColumnDef<Payment>[] = [
   {
     id: "select",
     header: ({ table }) => (
       <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
+        checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
       />
@@ -46,11 +49,22 @@ export const columns: ColumnDef<Payment>[] = [
   },
   {
     accessorKey: "id",
-    header: "ID",
+    header: "Payment ID",
+    cell: ({ row }) => {
+      const payment = row.original
+      return (
+        <Link
+          href={`/payments/${payment.id}`}
+          className="text-blue-600 hover:underline"
+        >
+          {payment.id}
+        </Link>
+      )
+    },
   },
   {
     accessorKey: "username",
-    header: "User",
+    header: "Customer",
   },
   {
     accessorKey: "email",
@@ -59,10 +73,6 @@ export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "amount",
     header: "Amount ($)",
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"))
-      return <span>${amount.toFixed(2)}</span>
-    },
   },
   {
     accessorKey: "status",
@@ -70,17 +80,17 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => {
       const status = row.getValue("status") as string
       return (
-        <span
-          className={`px-2 py-1 rounded-md text-xs font-medium ${
+        <Badge
+          variant={
             status === "success"
-              ? "bg-green-100 text-green-700"
+              ? "default"
               : status === "pending"
-              ? "bg-yellow-100 text-yellow-700"
-              : "bg-red-100 text-red-700"
-          }`}
+              ? "secondary"
+              : "destructive"
+          }
         >
           {status}
-        </span>
+        </Badge>
       )
     },
   },
@@ -93,27 +103,25 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="sm">
-              •••
-            </Button>
+            <Button variant="outline" size="sm">⋮</Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(payment.email)}
             >
-              Copy Email
+              Copy Customer Email
             </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => alert(`Viewing details for ${payment.username}`)}
-            >
-              View Customer Details
+            <DropdownMenuItem asChild>
+              <Link href={`/customers/${payment.username}`}>
+                View Customer Details
+              </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => alert(`Viewing payment ${payment.id}`)}
-            >
-              View Payment Details
+            <DropdownMenuItem asChild>
+              <Link href={`/payments/${payment.id}`}>
+                View Payment Details
+              </Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
