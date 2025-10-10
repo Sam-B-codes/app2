@@ -22,11 +22,8 @@ import EditUser from "@/components/EditUser";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import AppLineChart from "@/components/AppLineChart";
 
-type Props = {
-  params: { id: string };
-};
-
-export default function UserPage({ params }: Props) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function UserPage({ params }: { params: any }) {
   const { id } = params;
 
   return (
@@ -47,7 +44,6 @@ export default function UserPage({ params }: Props) {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      
       {/* Container */}{" "}
       <div className="mt-4 flex flex-col xl:flex-row gap-8">
         {" "}
@@ -139,11 +135,6 @@ export default function UserPage({ params }: Props) {
               </HoverCard>{" "}
             </div>{" "}
           </div>
-
-
-
-
-
           {/* Info */}
           <div className="bg-primary-foreground p-4 rounded-lg">
             <div className="flex items-center justify-between">
